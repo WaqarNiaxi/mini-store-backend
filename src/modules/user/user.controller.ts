@@ -1,0 +1,46 @@
+import { Request, Response, NextFunction } from "express";
+import { getUserProfile, updateUserProfile } from "./user.service";
+
+export const getProfile = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    console.log("sa")
+    const userId = (req as any).user.id;
+
+    const user = await getUserProfile(userId);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.json(user);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const updateProfile = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const userId = (req as any).user.id;
+    const { name, image } = req.body;
+
+    const updatedUser = await updateUserProfile(userId, {
+      name,
+      image,
+    });
+
+    res.json({
+      message: "Profile updated successfully",
+      user: updatedUser,
+    });
+  } catch (error) {
+    next(error);
+  }
+};

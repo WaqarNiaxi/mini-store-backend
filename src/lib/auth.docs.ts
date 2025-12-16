@@ -1,13 +1,6 @@
 /**
  * @swagger
- * tags:
- *   name: Auth
- *   description: Authentication endpoints
- */
-
-/**
- * @swagger
- * /auth/register:
+ * /api/auths/sign-up/email:
  *   post:
  *     summary: Register a new user
  *     tags: [Auth]
@@ -17,29 +10,25 @@
  *         application/json:
  *           schema:
  *             type: object
- *             required: [name, email, password]
  *             properties:
  *               name:
  *                 type: string
- *                 example: John Doe
  *               email:
  *                 type: string
- *                 example: john@example.com
  *               password:
  *                 type: string
- *                 example: password123
  *     responses:
  *       201:
  *         description: User registered successfully
  *       400:
- *         description: Validation error
+ *         description: Bad request / validation error
  */
 
 /**
  * @swagger
- * /auth/login:
+ * /api/auths/sign-in/email:
  *   post:
- *     summary: Login user
+ *     summary: Login with email and password
  *     tags: [Auth]
  *     requestBody:
  *       required: true
@@ -47,17 +36,14 @@
  *         application/json:
  *           schema:
  *             type: object
- *             required: [email, password]
  *             properties:
  *               email:
  *                 type: string
- *                 example: john@example.com
  *               password:
  *                 type: string
- *                 example: password123
  *     responses:
  *       200:
- *         description: Login successful
+ *         description: Login successful, returns token & cookies
  *       401:
  *         description: Invalid credentials
  */
