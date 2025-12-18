@@ -8,7 +8,12 @@ export const getUserProfile = async (userId: string) => {
       id: true,
       name: true,
       email: true,
-      image: true,
+      wallet: true,
+      giftsSent: true,
+      giftsReceived: true,
+      transfersSent: true,
+      transfersRecv: true,
+      transactions: true,
       createdAt: true,
     },
   });

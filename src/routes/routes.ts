@@ -35,3 +35,18 @@ export const ORDER_ROUTES = {
   ROOT: `${BASE_ROUTES.API}/order`,
   ORDER: `/`,
 };
+
+export const ORDER_ItEM_ROUTES = {
+  ROOT: `${BASE_ROUTES.API}/orderItem`,
+  ORDER_ITEM: `/`,
+};
+
+export const GIFT_ROUTES = {
+  ROOT: `${BASE_ROUTES.API}/gift`,
+  gift: `/`,
+};
+
+export const CREDIT_TRANSFER_ROUTES = {
+  ROOT: `${BASE_ROUTES.API}/creditTransfer`,
+  creditTransfer: `/`,
+};

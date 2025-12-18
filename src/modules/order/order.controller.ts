@@ -8,13 +8,13 @@ export const createOrder = async (
   next: NextFunction
 ) => {
   try {
-    const { userId } = req.body;
+    const userId = (req as any).user.id;
     const userInfo = await getUserProfile(userId);
     if (!userInfo) {
       return res.status(404).json({ message: "User not found" });
     }
 
-    const order = await createOrderService(req.body);
+    const order = await createOrderService(userId, req.body);
     return res.status(201).json(order);
   } catch (error) {
     next(error);
@@ -27,7 +27,8 @@ export const getOrderList = async (
   next: NextFunction
 ) => {
   try {
-    const orders = await getOrderAllList();
+    const userId = (req as any).user.id;
+    const orders = await getOrderAllList(userId);
     if (!orders) {
       return res.status(404).json({ message: "orders not found" });
     }

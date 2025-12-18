@@ -1,8 +1,12 @@
 import prisma from "../../prisma/client";
 import { CreateWalletTransactionDto } from "./walletTransfer.types";
 
-export const getWalletTransferList = async () => {
-  return prisma.walletTransaction.findMany();
+export const getWalletTransferList = async (userId: string) => {
+  return prisma.walletTransaction.findMany({
+    where: {
+      userId,
+    },
+  });
 };
 
 export const getWalletTransferByIdService = async (id: string) => {

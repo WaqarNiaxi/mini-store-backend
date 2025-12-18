@@ -3,6 +3,7 @@ import { ORDER_ROUTES } from "../../routes/routes";
 import { validate } from "../../middlewares/validate";
 import { createOrder, getOrderList } from "./order.controller";
 import { requireAuth } from "../../middlewares/auth.middleware";
+import { orderSchema } from "./order.schema";
 
 const router = Router();
 
@@ -21,12 +22,8 @@ const router = Router();
  *           schema:
  *             type: object
  *             required:
- *               - userId
  *               - totalAmount
  *             properties:
- *               userId:
- *                 type: string
- *                 example: "b1f1e9b2-1234-4cde-9a12-abc123xyz"
  *               totalAmount:
  *                 type: number
  *                 example: 150.75
@@ -38,7 +35,12 @@ const router = Router();
  *       401:
  *         description: Unauthorized
  */
-router.post(ORDER_ROUTES.ORDER, requireAuth, createOrder);
+router.post(
+  ORDER_ROUTES.ORDER,
+  requireAuth,
+  validate(orderSchema),
+  createOrder
+);
 
 /**
  * @swagger

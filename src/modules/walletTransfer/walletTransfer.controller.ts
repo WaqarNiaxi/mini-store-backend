@@ -12,7 +12,8 @@ export const getWalletTransfer = async (
   next: NextFunction
 ) => {
   try {
-    const WalletTransferList = await getWalletTransferList();
+    const userId = (req as any).user.id;
+    const WalletTransferList = await getWalletTransferList(userId);
     return res.json(WalletTransferList);
   } catch (error) {
     next(error);
