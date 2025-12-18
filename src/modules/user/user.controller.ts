@@ -7,7 +7,6 @@ export const getProfile = async (
   next: NextFunction
 ) => {
   try {
-    console.log("sa")
     const userId = (req as any).user.id;
 
     const user = await getUserProfile(userId);
@@ -29,11 +28,11 @@ export const updateProfile = async (
 ) => {
   try {
     const userId = (req as any).user.id;
-    const { name, image } = req.body;
+    const { name, email } = req.body;
 
     const updatedUser = await updateUserProfile(userId, {
       name,
-      image,
+      email,
     });
 
     res.json({

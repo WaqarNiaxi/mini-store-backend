@@ -14,3 +14,24 @@ export const USER_ROUTES = {
   ROOT: `${BASE_ROUTES.API}/users`,
   PROFILE: "/profile",
 };
+
+export const WALLET_ROUTES = {
+  ROOT: `${BASE_ROUTES.API}/wallet`,
+  WALLET: `/`,
+};
+
+export const PRODUCT_ROUTES = {
+  ROOT: `${BASE_ROUTES.API}/product`,
+  PRODUCT: "/",
+};
+
+export const WALLET_TRANSFER = {
+  ROOT: `${BASE_ROUTES.API}/walletTransfer`,
+  WALLET_TRANSFER: "/",
+  BY_ID: `/:id`,
+};
+
+export const ORDER_ROUTES = {
+  ROOT: `${BASE_ROUTES.API}/order`,
+  ORDER: `/`,
+};

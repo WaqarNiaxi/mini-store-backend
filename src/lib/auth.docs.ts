@@ -47,3 +47,17 @@
  *       401:
  *         description: Invalid credentials
  */
+
+/**
+ * @swagger
+ * /api/auths/sign-out:
+ *   post:
+ *     summary: Sign out the currently authenticated user
+ *     tags: [Auth]
+ *     description: Logs out the user by invalidating the session and clearing authentication cookies.
+ *     responses:
+ *       200:
+ *         description: User signed out successfully
+ *       401:
+ *         description: User is not authenticated
+ */

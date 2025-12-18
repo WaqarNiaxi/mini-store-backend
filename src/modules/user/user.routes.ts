@@ -2,6 +2,8 @@ import { Router } from "express";
 import { requireAuth } from "../../middlewares/auth.middleware";
 import { USER_ROUTES } from "../../routes/routes";
 import { getProfile, updateProfile } from "./user.controller";
+import { updateProfileSchema } from "./user.schema";
+import { validate } from "../../middlewares/validate";
 
 const router = Router();
 
@@ -19,11 +21,7 @@ const router = Router();
  *       401:
  *         description: Unauthorized
  */
-router.get(
-  USER_ROUTES.PROFILE,
-  requireAuth,
-  getProfile
-);
+router.get(USER_ROUTES.PROFILE, requireAuth, getProfile);
 
 /**
  * @swagger
@@ -42,7 +40,7 @@ router.get(
  *             properties:
  *               name:
  *                 type: string
- *               image:
+ *               email:
  *                 type: string
  *     responses:
  *       200:
@@ -53,6 +51,7 @@ router.get(
 router.put(
   USER_ROUTES.PROFILE,
   requireAuth,
+  validate(updateProfileSchema),
   updateProfile
 );
 
