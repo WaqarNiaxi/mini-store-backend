@@ -221,7 +221,7 @@ src/swagger/swagger.config.ts
 Once the server is running, access API docs at:
 
 ```
-{BACKEND_URL}/api-docs
+{BACKEND_URL}/docs
 ```
 
 Swagger includes:
@@ -242,15 +242,5 @@ Swagger includes:
 
 ---
 
-## Future Improvements
- 
-* Background job for product cache refresh
-* Rate limiting & security hardening
-* Pagination for order and gift histories
-* Unit & integration tests
 
----
 
-## License
-
-This project is for learning and assessment purposes.
