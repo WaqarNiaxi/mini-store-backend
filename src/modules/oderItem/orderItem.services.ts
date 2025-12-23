@@ -34,9 +34,8 @@ export const createOrderItemService = async (
       throw httpError(400, "Insufficient wallet balance");
     }
 
-    /* ---------------------------------- */
-    /* 3️⃣ Create order + order item */
-    /* ---------------------------------- */
+    /* 3 Create order + order item */
+
     const order = await tx.order.create({
       data: {
         userId,
@@ -58,9 +57,8 @@ export const createOrderItemService = async (
       },
     });
 
-    /* ---------------------------------- */
-    /* 4️⃣ Deduct wallet balance */
-    /* ---------------------------------- */
+    /* 4 Deduct wallet balance */
+    
     await tx.wallet.update({
       where: { userId },
       data: {
@@ -70,9 +68,8 @@ export const createOrderItemService = async (
       },
     });
 
-    /* ---------------------------------- */
-    /* 5️⃣ Wallet transaction log */
-    /* ---------------------------------- */
+    /* 5 Wallet transaction log */
+    
     await tx.walletTransaction.create({
       data: {
         userId,
@@ -82,12 +79,11 @@ export const createOrderItemService = async (
       },
     });
 
-    /* ---------------------------------- */
-    /* 6️⃣ Return response */
-    /* ---------------------------------- */
+    /* 6 Return response */
+    
     return {
-      order,
-      remainingBalance: wallet.balance.minus(totalAmount),
-    };
+    id:order.id,
+    totalAmount:order.totalAmount
+  };
   });
 };

@@ -2,6 +2,25 @@ import prisma from "../../prisma/client";
 import { httpError } from "../../services/error.types";
 import { giftDTO } from "./gift.types";
 
+export const getGiftListService = async (userId: string) => {
+  const [senderList, recipientList] = await Promise.all([
+    prisma.gift.findMany({
+      where: { senderId: userId },
+      include: { 
+        recipient: { select: { name: true, email: true } }, 
+        product:{ select:{ title:true, price:true,thumbnail:true}}
+      },
+    }),
+    prisma.gift.findMany({
+      where: { recipientId: userId },
+      include: { sender: { select: { name: true, email: true } } ,
+       product:{ select:{ title:true, price:true,thumbnail:true}}}
+    }),
+  ]);
+
+  return { senderList, recipientList };
+};
+
 export const createGiftService = async (userId: string, data: giftDTO) => {
   const { productId, recipientId } = data;
 

@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { requireAuth } from "../../middlewares/auth.middleware";
 import { USER_ROUTES } from "../../routes/routes";
-import { getProfile, updateProfile } from "./user.controller";
+import { getAllUser, getProfile, updateProfile } from "./user.controller";
 import { updateProfileSchema } from "./user.schema";
 import { validate } from "../../middlewares/validate";
 
@@ -22,6 +22,21 @@ const router = Router();
  *         description: Unauthorized
  */
 router.get(USER_ROUTES.PROFILE, requireAuth, getProfile);
+
+
+/**
+ * @swagger
+ * /api/users/allUser:
+ *   get:
+ *     summary: Get logged-in user profile
+ *     tags: [User]
+ *     responses:
+ *       200:
+ *         description: User List
+ *       401:
+ *         description: Unauthorized
+ */
+router.get(USER_ROUTES.ALL_USER, getAllUser);
 
 /**
  * @swagger

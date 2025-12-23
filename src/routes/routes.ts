@@ -13,6 +13,7 @@ export const AUTH_ROUTES = {
 export const USER_ROUTES = {
   ROOT: `${BASE_ROUTES.API}/users`,
   PROFILE: "/profile",
+  ALL_USER: "/allUser"
 };
 
 export const WALLET_ROUTES = {

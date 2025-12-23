@@ -1,6 +1,6 @@
 /**
  * @swagger
- * /api/auths/sign-up/email:
+ * /api/auth/sign-up/email:
  *   post:
  *     summary: Register a new user
  *     tags: [Auth]
@@ -26,7 +26,7 @@
 
 /**
  * @swagger
- * /api/auths/sign-in/email:
+ * /api/auth/sign-in/email:
  *   post:
  *     summary: Login with email and password
  *     tags: [Auth]
@@ -50,7 +50,7 @@
 
 /**
  * @swagger
- * /api/auths/sign-out:
+ * /api/auth/sign-out:
  *   post:
  *     summary: Sign out the currently authenticated user
  *     tags: [Auth]

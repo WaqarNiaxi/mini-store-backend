@@ -3,6 +3,27 @@ import { httpError } from "../../services/error.types";
 import { creditTransferDTO } from "./creditTransfer.types";
 import { Prisma } from "@prisma/client";
 
+
+
+
+
+export const getCreditTransferListService = async (userId: string) => {
+  const [senderList, recipientList] = await Promise.all([
+    prisma.creditTransfer.findMany({
+      where: { senderId: userId },
+      include: { 
+        recipient: { select: { name: true, email: true } }, 
+      },
+    }),
+    prisma.creditTransfer.findMany({
+      where: { recipientId: userId },
+      include: { sender: { select: { name: true, email: true } } ,
+    }}),
+  ]);
+
+  return { senderList, recipientList };
+};
+
 export const createCreditTransferService = async (
   senderId: string,
   data: creditTransferDTO

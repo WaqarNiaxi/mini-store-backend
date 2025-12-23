@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { createCreditTransferService } from "./creditTransfer.service";
+import { createCreditTransferService, getCreditTransferListService } from "./creditTransfer.service";
 
 export const createCreditTransfer = async (
   req: Request,
@@ -15,3 +15,18 @@ export const createCreditTransfer = async (
     next(error);
   }
 };
+
+
+export const getCreditTransferList=async(
+  req:Request,
+  res:Response,
+  next:NextFunction
+)=>{
+  try{
+    const giftList=await getCreditTransferListService((req as any).user.id)
+    res.status(200).json(giftList)
+  }
+  catch(error){
+    next(error)
+  }
+}

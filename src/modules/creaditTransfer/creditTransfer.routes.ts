@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { requireAuth } from "../../middlewares/auth.middleware";
-import { createCreditTransfer } from "./creditTransfer.controller";
+import { createCreditTransfer, getCreditTransferList } from "./creditTransfer.controller";
 import { CREDIT_TRANSFER_ROUTES } from "../../routes/routes";
 
 const router = Router();
@@ -45,5 +45,20 @@ router.post(
   requireAuth,
   createCreditTransfer
 );
+
+
+/**
+ * @swagger
+ * /api/creditTransfer:
+ *   get:
+ *     summary: Get All Credit Transfer List
+ *     tags: [Credit Transfer]
+ *     responses:
+ *       200:
+ *         description: Credit Transfer List
+ *       401:
+ *         description: Unauthorized
+ */
+router.get(CREDIT_TRANSFER_ROUTES.creditTransfer, requireAuth, getCreditTransferList);
 
 export default router;

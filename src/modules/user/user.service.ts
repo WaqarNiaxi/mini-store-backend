@@ -8,13 +8,23 @@ export const getUserProfile = async (userId: string) => {
       id: true,
       name: true,
       email: true,
-      wallet: true,
-      giftsSent: true,
-      giftsReceived: true,
-      transfersSent: true,
-      transfersRecv: true,
-      transactions: true,
-      createdAt: true,
+      wallet: {select:{balance:true}},
+      // giftsSent: true,
+      // giftsReceived: true,
+      // transfersSent: true,
+      // transfersRecv: true,
+      // transactions: true,
+      // createdAt: true,
+    },
+  });
+};
+
+export const getAllUserService = () => {
+  return prisma.user.findMany({
+    select: {
+      id: true,
+      name: true,
+      email: true,
     },
   });
 };

@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { GIFT_ROUTES } from "../../routes/routes";
 import { requireAuth } from "../../middlewares/auth.middleware";
-import { createGift } from "./gift.controller";
+import { createGift, getGiftList } from "./gift.controller";
 
 const router = Router();
 /**
@@ -65,5 +65,21 @@ const router = Router();
  *         description: Product or recipient not found
  */
 router.post(GIFT_ROUTES.gift, requireAuth, createGift);
+
+
+
+/**
+ * @swagger
+ * /api/gift:
+ *   get:
+ *     summary: Get All Gift List
+ *     tags: [Gift]
+ *     responses:
+ *       200:
+ *         description: User List
+ *       401:
+ *         description: Unauthorized
+ */
+router.get(GIFT_ROUTES.gift, requireAuth, getGiftList);
 
 export default router;

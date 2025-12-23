@@ -9,7 +9,7 @@ export const swaggerSpec = swaggerJsdoc({
       description: "API documentation for Mini Store with Better Auth",
     },
     servers: [
-      { url: "http://localhost:4000" }
+      { url: process.env.BACKEND_URL }
     ],
   components: {
   securitySchemes: {

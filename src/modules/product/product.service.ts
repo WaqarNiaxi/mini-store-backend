@@ -26,5 +26,10 @@ export const getProductList = async () => {
     products = await prisma.product.findMany();
   }
 
-  return products;
+  const formattedProducts = products.map((product) => ({
+    ...product,
+    price: Number(product.price).toFixed(2), 
+  }));
+
+  return formattedProducts;
 };

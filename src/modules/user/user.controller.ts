@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { getUserProfile, updateUserProfile } from "./user.service";
+import { getAllUserService, getUserProfile, updateUserProfile } from "./user.service";
 
 export const getProfile = async (
   req: Request,
@@ -20,6 +20,23 @@ export const getProfile = async (
     next(error);
   }
 };
+
+export const getAllUser=async(
+  req:Request,
+  res: Response,
+  next: NextFunction
+)=>{
+  try{
+    const userList= await getAllUserService();
+    if(!userList){
+      res.status(404).json({message: "user Not Found"})
+    }
+    res.json(userList)
+  }
+  catch(error){
+    next(error)
+  }
+}
 
 export const updateProfile = async (
   req: Request,

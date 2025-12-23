@@ -13,15 +13,30 @@ export const createOrderService = async (
     },
   });
 
-  return order;
+  return {order};
+  // "productId": "1",
+  //       "price": "9.99",
+  //       "quantity": 2,
 };
 
 export const getOrderAllList = async (userId: string) => {
   return await prisma.order.findMany({
     where: { userId },
-    include: {
+    select: {
+      id:true,
+      totalAmount: true,
+      createdAt: true,
       items: {
-        include: { product: true },
+        select: {
+          productId: true,
+          price: true,
+          quantity: true,
+          product: {
+            select: {
+              title: true,
+            },
+          },
+        },
       },
     },
   });
