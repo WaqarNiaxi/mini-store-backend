@@ -5,7 +5,7 @@ declare module "express-serve-static-core" {
     user?: {
       id: string;
       email: string;
-      [key: string]: any; // optional extra fields
+      [key: string]: any;
     };
   }
 }

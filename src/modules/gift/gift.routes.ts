@@ -2,6 +2,8 @@ import { Router } from "express";
 import { GIFT_ROUTES } from "../../routes/routes";
 import { requireAuth } from "../../middlewares/auth.middleware";
 import { createGift, getGiftList } from "./gift.controller";
+import { validate } from "../../middlewares/validate";
+import { giftSchema } from "./gift.schema";
 
 const router = Router();
 /**
@@ -64,9 +66,7 @@ const router = Router();
  *       404:
  *         description: Product or recipient not found
  */
-router.post(GIFT_ROUTES.gift, requireAuth, createGift);
-
-
+router.post(GIFT_ROUTES.gift, requireAuth, validate(giftSchema), createGift);
 
 /**
  * @swagger

@@ -2,6 +2,8 @@ import { Router } from "express";
 import { requireAuth } from "../../middlewares/auth.middleware";
 import { createCreditTransfer, getCreditTransferList } from "./creditTransfer.controller";
 import { CREDIT_TRANSFER_ROUTES } from "../../routes/routes";
+import { validate } from "../../middlewares/validate";
+import { creditTransferSchema } from "./creditTransfer.schema";
 
 const router = Router();
 
@@ -43,6 +45,7 @@ const router = Router();
 router.post(
   CREDIT_TRANSFER_ROUTES.creditTransfer,
   requireAuth,
+  validate(creditTransferSchema),
   createCreditTransfer
 );
 
