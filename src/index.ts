@@ -1,9 +1,8 @@
-import express from "express";
-import dotenv from "dotenv";
+import { app } from "./app";
 
-dotenv.config(); // load .env variables
-const app = express();
-app.use(express.json());
+const PORT = process.env.PORT || 4000;
 
-
-app.listen(4000, () => console.log("Server running on port 4000"));
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
+  console.log(`📚 Swagger Docs: http://localhost:${PORT}/docs`);
+});

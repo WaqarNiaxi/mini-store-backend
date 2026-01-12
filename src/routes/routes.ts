@@ -1,0 +1,53 @@
+export const BASE_ROUTES = {
+  API: "/api",
+};
+
+export const AUTH_ROUTES = {
+  ROOT: `${BASE_ROUTES.API}/auth`,
+  REGISTER: "/register",
+  LOGIN: "/login",
+  FORGOT_PASSWORD: "/forgot-password",
+  RESET_PASSWORD: "/reset-password",
+};
+
+export const USER_ROUTES = {
+  ROOT: `${BASE_ROUTES.API}/users`,
+  PROFILE: "/profile",
+  ALL_USER: "/allUser"
+};
+
+export const WALLET_ROUTES = {
+  ROOT: `${BASE_ROUTES.API}/wallet`,
+  WALLET: `/`,
+};
+
+export const PRODUCT_ROUTES = {
+  ROOT: `${BASE_ROUTES.API}/product`,
+  PRODUCT: "/",
+};
+
+export const WALLET_TRANSFER = {
+  ROOT: `${BASE_ROUTES.API}/walletTransfer`,
+  WALLET_TRANSFER: "/",
+  BY_ID: `/:id`,
+};
+
+export const ORDER_ROUTES = {
+  ROOT: `${BASE_ROUTES.API}/order`,
+  ORDER: `/`,
+};
+
+export const ORDER_ItEM_ROUTES = {
+  ROOT: `${BASE_ROUTES.API}/orderItem`,
+  ORDER_ITEM: `/`,
+};
+
+export const GIFT_ROUTES = {
+  ROOT: `${BASE_ROUTES.API}/gift`,
+  gift: `/`,
+};
+
+export const CREDIT_TRANSFER_ROUTES = {
+  ROOT: `${BASE_ROUTES.API}/creditTransfer`,
+  creditTransfer: `/`,
+};
